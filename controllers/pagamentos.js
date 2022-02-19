@@ -6,7 +6,11 @@ module.exports = function(app){
 
     app.post('/pagamentos/pagamento', function(req, res){
         let pagamento = req.body;
-        console.log(pagamento);
-        res.send('Voce esta na rota pagamentos/pagamento');
+        console.log('processando requisicao de um novo pagamento');
+        
+        pagamento.status = 'CRIADO';
+        pagamento.data = new Date;
+
+        res.send(pagamento);
     })
 }
